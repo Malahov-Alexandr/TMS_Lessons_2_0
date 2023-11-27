@@ -14,4 +14,4 @@ def test_pop():
     time.sleep(4)
 
     test = "//div[@class='auth-form__title auth-form__title_base auth-form__title_condensed-other']"
-    assert test == "Помогите нам улучшить безопасность"
+    assert test == "Помогите нам улучшить  безопасность"
