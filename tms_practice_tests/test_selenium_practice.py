@@ -10,6 +10,7 @@
 
 import pytest
 
+
 class TestTitle():
     @pytest.mark.parametrize("url, page_title", [
         ("https://www.amazon.com/", "Amazon"),
@@ -21,12 +22,10 @@ class TestTitle():
             driver = firefox_driver
             driver.get(url)
             current_title = driver.title
-            assert current_title == page_title, firefox_driver.get_full_page_screenshot_as_png()
+            assert current_title == page_title, f'Expected title {page_title}, but got {current_title}'
+
+
         else:
             driver = chrome_driver.get(url)
             current_title = driver.title
-            assert current_title == page_title, chrome_driver.save_screenshot('failed_test.png')
-
-
-
-
+            assert current_title == page_title, f'Expected title {page_title}, but got {current_title}'
