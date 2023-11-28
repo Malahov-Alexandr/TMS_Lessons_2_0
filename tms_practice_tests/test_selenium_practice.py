@@ -10,18 +10,23 @@
 
 import pytest
 
+class TestTitle():
+    @pytest.mark.parametrize("url, page_title", [
+        ("https://www.amazon.com/", "Amazon"),
+        ("https://www.apple.com/", "Apple"),
+        ("https://www.google.com/", "Google"),
+    ])
+    def test_check_title(self, firefox_driver, chrome_driver, url, page_title):
+        if 'amazon' or 'apple' in url:
+            driver = firefox_driver
+            driver.get(url)
+            current_title = driver.title
+            assert current_title == page_title, firefox_driver.get_full_page_screenshot_as_png()
+        else:
+            driver = chrome_driver.get(url)
+            current_title = driver.title
+            assert current_title == page_title, chrome_driver.save_screenshot('failed_test.png')
 
-@pytest.mark.parametrize("url, page_title", [
-    ("https://www.amazon.com/", "Amazon"),
-    ("https://www.apple.com/", "Apple"),
-    ("https://www.google.com/", "Google"),
-])
-def test_check_title(chrome_driver, firefox_driver, url, page_title):
-    if 'amazon' or 'apple' in url:
-        firefox_driver.get(url)
-        current_title = firefox_driver.title
-        assert current_title == page_title, firefox_driver.save_screenshot('screenshot_for_failed_test.png')
-    else:
-        chrome_driver.get(url)
-        current_driver = chrome_driver.title
-        assert current_driver == page_title
+
+
+
