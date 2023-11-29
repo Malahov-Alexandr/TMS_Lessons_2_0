@@ -1,17 +1,24 @@
-from flask_mongoengine import MongoEngine
-from aplication.store import app
+import mysql.connector
 
-db = MongoEngine(app)
+# Replace these values with your MySQL server credentials
+host = 'your_mysql_host'
+user = 'your_mysql_user'
+password = 'your_mysql_password'
+database = 'your_database_name'
+def get_products():
+    conn = mysql.connector.connect(
+        host=host,
+        user=user,
+        password=password,
+        database=database
+    )
 
-app.config['MONGODB_SETTINGS'] = {
-    'db': 'shopdb',
-    'host': 'localhost',
-    'port': 27017,
-}
+    cursor = conn.cursor(dictionary=True)
 
+    cursor.execute("SELECT * FROM products")
+    products = cursor.fetchall()
 
-class Product(db.Document):
-    name = db.StringField(required=True, max_length=255)
-    description = db.StringField(required=True, max_length=255)
-    price = db.FloatField(required=True)  # Corrected to FloatField for price
-    image_url = db.StringField(max_length=255)
+    cursor.close()
+    conn.close()
+
+    return products
