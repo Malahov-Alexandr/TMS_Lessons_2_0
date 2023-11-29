@@ -3,7 +3,6 @@ from selenium import webdriver
 
 
 class CustomDriver:
-    driver = None
 
     def __init__(self, x):
         self.x = x
@@ -12,12 +11,12 @@ class CustomDriver:
         print('x = ', self.x)
 
         if ('apple' in self.x) or ('amazon' in self.x):
-            self.driver = webdriver.Firefox()
+            driver = webdriver.Firefox()
             print('firefox')
         else:
-            self.driver = webdriver.Chrome()
+            driver = webdriver.Chrome()
             print('chrome')
-        return self.driver
+        return driver
 
 
 @pytest.fixture
