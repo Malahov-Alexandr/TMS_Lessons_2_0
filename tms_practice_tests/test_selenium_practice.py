@@ -11,21 +11,15 @@
 import pytest
 
 
-class TestTitle():
-    @pytest.mark.parametrize("url, page_title", [
+class TestTitle:
+    @pytest.mark.parametrize("test_arg, page_title", [
         ("https://www.amazon.com/", "Amazon"),
         ("https://www.apple.com/", "Apple"),
         ("https://www.google.com/", "Google"),
     ])
-    def test_check_title(self, firefox_driver, chrome_driver, url, page_title):
-        if 'amazon' or 'apple' in url:
-            driver = firefox_driver
-            driver.get(url)
-            current_title = driver.title
-            assert current_title == page_title, f'Expected title {page_title}, but got {current_title}'
+    def test_check_title(self, driver, test_arg, page_title):
+        driver.get(test_arg)
+        current_title = driver.title
+        assert current_title == page_title
 
 
-        else:
-            driver = chrome_driver.get(url)
-            current_title = driver.title
-            assert current_title == page_title, f'Expected title {page_title}, but got {current_title}'
