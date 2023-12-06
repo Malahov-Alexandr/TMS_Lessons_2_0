@@ -2,7 +2,6 @@ from selenium.webdriver.common.by import By
 
 from .base_page import BasePage
 
-
 # - Зайти на сайт https://www.thesaurus.com/
 # - В поле поиска ввести love
 # - Нажать иконку поиска

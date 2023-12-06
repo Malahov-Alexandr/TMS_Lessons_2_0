@@ -2,7 +2,6 @@ from .Pages.base_page import BasePage,save
 from .Pages.main_page import MainPage
 from .Pages.result_page import ResultPage
 
-
 def test_synonyms(driver):
     main_page = MainPage(driver)
     result_page = ResultPage(driver)
