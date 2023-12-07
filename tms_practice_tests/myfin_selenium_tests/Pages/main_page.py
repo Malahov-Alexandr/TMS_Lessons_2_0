@@ -24,7 +24,7 @@ class MainPage(BasePage):
     GO_TO_MSI_BUTTON = (By.XPATH, "//button[@type='button']")
     PHONE_NUMBER = '299402265'
     # Exptected values
-    GO_TO_MSI_BUTTON_COLOR = 'color: #ef3124;'
+    GO_TO_MSI_BUTTON_COLOR = 'rgba(239, 49, 36, 1)'
     IDENTIFICATION_TEXT = 'Пройдите идентификацию'
 
     def hover_card_button(self):
@@ -43,6 +43,6 @@ class MainPage(BasePage):
     def verify_msi_button(self):
         msi_button = self.find_element(self.GO_TO_MSI_BUTTON)
         assert msi_button.is_displayed()
-        button_color = msi_button.value_of_css_property('background-color')
+        button_color = self.get_color(self.GO_TO_MSI_BUTTON)
         print(button_color)
-        assert button_color == '#ef3124', f"Button color is {button_color} "
+        assert button_color == self.GO_TO_MSI_BUTTON_COLOR, f"Button color is {button_color} "

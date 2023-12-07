@@ -1,10 +1,8 @@
-from .Pages.base_page import BasePage
-from .Pages.main_page import MainPage
 
 
-def test_myfin_red_button(driver):
-    main = MainPage(driver)
-    base = BasePage(driver)
+
+def test_myfin_red_button(setup):
+    base, main = setup
     base.open(base.URL)
     main.hover_card_button()
     main.click_red_card_button()
@@ -13,4 +11,3 @@ def test_myfin_red_button(driver):
     main.click(main.CONFIRM_BUTTON)
     main.verify_identification_text()
     main.verify_msi_button()
-    ...

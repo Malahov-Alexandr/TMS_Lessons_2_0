@@ -1,3 +1,5 @@
+import colorsys
+
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -52,7 +54,7 @@ class BasePage:
         return attr
 
     def get_color(self, locator):
-        color = self.find_element(locator).value_of_css_property('color')
+        color = self.find_element(locator).value_of_css_property('background-color')
         return color
 
     def go_to_another_page(self):
