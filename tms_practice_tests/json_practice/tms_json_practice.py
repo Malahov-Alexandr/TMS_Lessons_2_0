@@ -15,4 +15,4 @@ with open('HW_Files.txt', 'r', encoding='utf-8') as f:
     print(new_dict)
 
 with open('test_file.json', 'w',encoding='utf-8') as new_file:
-    (json.dump(new_dict, new_file,ensure_ascii=False,indent=4,sort_keys=True=)
+    json.dump(new_dict, new_file,ensure_ascii=False,indent=4,sort_keys=True)
