@@ -37,7 +37,3 @@ class TestExample:
         assert title_text == title_for_order_page
         assert address_text == address_for_order_page
         assert say_to_admin_text.strip() == say_to_admin
-
-
-
-

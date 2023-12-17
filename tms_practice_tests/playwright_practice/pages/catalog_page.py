@@ -7,4 +7,3 @@ class CatalogPage:
 
     def select_by_role(self, category):
         self.page.get_by_role("link", name=category).first.click()
-
